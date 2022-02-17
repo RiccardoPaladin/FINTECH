@@ -1,10 +1,13 @@
-#HOMEWORK 1 - Riccardo Paladin
-#FA 595
+"""
+HOMEWORK 1 - Riccardo Paladin
+FA 595 - Financial Technology
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.arange(0,20,0.01)
+
+x = np.arange(0,4*np.pi,0.01)
 s = np.sin(x)
 c = np.cos(x)
 plt.plot(x,s,x,c)                  #Plot with sin and cos
