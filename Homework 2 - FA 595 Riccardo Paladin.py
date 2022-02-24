@@ -25,6 +25,12 @@ print("Title of the website is : ")
 for title in soup1.find_all('title'):
     print(title.get_text())
 
-for recs in range(50):
-    recs = requests.get(url)
-    recs.status_code
+#for recs in range(50):
+    #recs = requests.get(url)
+    #status = recs.status_code
+
+
+print(soup1.get_text())
+
+body = soup1.body
+body
