@@ -71,6 +71,7 @@ for _ in range(50):
         c = body.get_text()
         lines2 = c.split('\n')
         lines2 = ''.join([x for x in lines2])
+ #OFFICIAL
 
 for _ in range(50):
     lines2 = []
@@ -81,6 +82,33 @@ for _ in range(50):
         c = body.get_text()
         lines2 = c.split('\n')
         print(lines2)
+
+webscraping = []
+for _ in range(50):
+    lines2 = []
+    url = 'http://34.238.119.208:8000/random_company'
+    rec = requests.get(url)
+    soup = BeautifulSoup(rec.text, 'html.parser')
+    for body in soup.find_all('body'):
+        c = body.get_text()
+        lines2 = c.split('\n')
+        webscraping.append(lines2)
+
+names = []
+purposes = []
+for i in range(50):
+    name = webscraping[i][4]
+    names.append(name)
+    for x in webscraping[i]:
+        if 'Purpose:' in x:
+            purposes.append(x)
+
+df_names = pd.DataFrame(names)
+df_purposes = pd.DataFrame(purposes)
+dataset = pd.concat([df_names, df_purposes], axis = 1)
+dataset.columns = ['Names', 'Purposes']
+dataset['Names'] = dataset['Names'].str.replace('Name:', '')
+dataset['Purposes'] = dataset['Purposes'].str.replace('Purpose:', '')
 
 
 print(soup1.get_text())
