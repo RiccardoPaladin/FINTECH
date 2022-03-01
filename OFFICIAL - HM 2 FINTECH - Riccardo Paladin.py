@@ -48,4 +48,4 @@ dataset['Purposes'] = dataset['Purposes'].str.replace('Purpose:', '')
 print(dataset)
 
 #Save and store dataset
-dataset.to_csv('webscraping_companies.csv')
+dataset.to_csv('webscrape_companies.csv')
