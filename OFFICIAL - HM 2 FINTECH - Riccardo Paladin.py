@@ -23,6 +23,8 @@ for _ in range(50):
             c = body.get_text()
             lines = c.split('\n')
             webscraping.append(lines)
+    else:
+        print('Error:', rec.status_code)
 
 names = []
 purposes = []
