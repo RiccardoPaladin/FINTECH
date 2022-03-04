@@ -1,19 +1,3 @@
-#The code below allow to open a tab and download the package needed
-import nltk
-import ssl
-
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-nltk.download()
-
-
-
-
 import nltk
 nltk.download('punkt')
 text = 'this is an sample.'
@@ -36,7 +20,6 @@ stemmer = PorterStemmer()
 stemmer.stem("jumps")     #it gives the stem of the word (jump) so the base form
 
 from nltk.stem import WordNetLemmatizer
-nltk.download('WordNet')
 lemmatizer= WordNetLemmatizer()    #decognugate vrebs, from past to infinite
 lemmatizer.lemmatize('was')       #it should give be but it give wa
 #the lemmatizer assumes that a single word is a noun and not a verb, so it needs a phrase or a part of speech
@@ -48,7 +31,7 @@ lemmatizer.lemmatize('was', 'v')  #now it give be
 
 
 # -m textblob.download_corporate lite
-from textblob import TextBlob   #with the capital letter to use the class
+from textblob import TextBlob   #with th ecapital letter to use the class
 blob = TextBlob(""" To understand why the Arab language is written from right to left, a review of the history of language is in order. The first evidence of the existence of a writing system dates back to the 4th millennium BCE, around -3500. Cuneiform writing was used in Mesopotamia""")
 blob[0:20]   #to bring the first 20 characters
 blob.tags  #all the object separed in tuples, it is a list
@@ -69,7 +52,7 @@ blob.words[0] #is the word is plular
 blob.words[0].singularize()  #it gives the singular
 blob.words[0].pluralize()  #from singular to plular
 blob.detect_lenguage
-blob.translate(from_lang= 'en' ,to = 'it')
+blob.translate(from_lang= 'en' ,to 'it')
 
 
 import spacy
@@ -85,12 +68,8 @@ similarity = token1.similarity(token2)  #rank based on the cosine of the angol a
 
 
 
-#pip install vaderSentiment
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalizer
-from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
-
-
 sia = SentimentIntensityAnalizer
 sia.polarity_scores("this is a string.")   #it gives a dictionary with positive, negative compound words based on the sense of the phrase. it gives the percentage of positivity and negativity
 #it recognize the meaning or the words and also things like esclamation points
