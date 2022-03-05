@@ -62,3 +62,7 @@ dataset
 
 #Save and store dataset
 dataset.to_csv('webscrape_companies.csv')
+
+if __name__ == "__main__":
+    obtain_web_info()
+    name_purpose()
