@@ -62,4 +62,3 @@ dataset
 
 #Save and store dataset
 dataset.to_csv('webscrape_companies.csv')
-
