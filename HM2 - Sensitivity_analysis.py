@@ -7,9 +7,14 @@ import numpy as np
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-data = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/webscrape_companies.csv')
-data = pd.DataFrame(data.iloc[0:,1:])
-
+data1 = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/webscrape_companies.csv')
+data1 = pd.DataFrame(data1.iloc[0:,1:])
+data2 = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/fake_companies.csv')
+data2 = pd.DataFrame(data2.iloc[0:,1:])
+data2.columns = ['Names', 'Purposes']
+data = pd.concat([data1,data2], axis=0)
+data = pd.DataFrame(data.iloc[0:,0:])
+data = data.reset_index()
 
 def best_worst_company(data):
     '''
@@ -36,7 +41,7 @@ best_worst_company = best_worst_company(data)
 print(best_worst_company.info())
 
 #Subsets of best and worst ten companies
-best_10 = best_worst_company.iloc[0:10,:1]
-worst_10 = best_worst_company.iloc[40:,:1]
+best_10 = best_worst_company['Names'].head(10)
+worst_10 = best_worst_company['Names'].tail(10)
 print('The best 10 companies are\n', best_10)
 print('The worst 10 companies are\n', worst_10)
