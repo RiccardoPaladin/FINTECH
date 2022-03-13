@@ -7,12 +7,16 @@ import numpy as np
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+#Collect all the 3 dataset
 data1 = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/webscrape_companies.csv')
 data1 = pd.DataFrame(data1.iloc[0:,1:])
 data2 = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/fake_companies.csv')
 data2 = pd.DataFrame(data2.iloc[0:,1:])
+data3 = pd.read_csv(r'/Users/riccardopaladin/Desktop/FINTECH/FINTECH---notes/fake_companies_3.csv')
+data3 = pd.DataFrame(data3.iloc[0:,1:])
 data2.columns = ['Names', 'Purposes']
-data = pd.concat([data1,data2], axis=0)
+data3.columns = ['Names', 'Purposes']
+data = pd.concat([data1,data2,data3], axis=0)
 data = pd.DataFrame(data.iloc[0:,0:])
 data = data.reset_index()
 
